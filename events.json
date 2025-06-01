@@ -1,0 +1,46 @@
+[
+    {
+        "id": "1",
+        "name": "Workshop ",
+        "date": "30/05/2025",
+        "location": "Th\u01b0 vi\u1ec7n T\u1ea7ng 3",
+        "capacity": 50,
+        "price": 250000,
+        "current_participants": 2,
+        "description": "C\u00f3 m\u1eb7t tr\u01b0\u1edbc 13h40",
+        "created_by": "admin"
+    },
+    {
+        "id": "2",
+        "name": "Tri\u1ec3n l\u00e3m Ngh\u1ec7 Thu\u1eadt",
+        "date": "29/05/2025",
+        "location": "\u0110\u1ecba \u0111i\u1ec3m 1",
+        "capacity": 100,
+        "price": 120000,
+        "current_participants": 4,
+        "description": "Qu\u00fd kh\u00e1ch t\u1ef1 gi\u1eef \u0111\u1ed3 c\u00e1 nh\u00e2n",
+        "created_by": "admin"
+    },
+    {
+        "id": "3",
+        "name": "Bu\u1ed5i h\u00f2a nh\u1ea1c Mozart",
+        "date": "31/05/2025",
+        "location": "\u0110\u1ecba \u0111i\u1ec3m 3",
+        "capacity": 100,
+        "price": 200000,
+        "current_participants": 2,
+        "description": "Bi\u1ec3u di\u1ec5n Piano",
+        "created_by": "admin"
+    },
+    {
+        "id": "4",
+        "name": "Bu\u1ed5i ra m\u1eaft s\u1ea3n ph\u1ea9m ",
+        "date": "05/07/2025",
+        "location": "\u0110\u1ecba \u0111i\u1ec3m 4",
+        "capacity": 3,
+        "price": 10000,
+        "current_participants": 3,
+        "description": "Samsung",
+        "created_by": "khoa"
+    }
+]
