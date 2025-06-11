@@ -7,6 +7,7 @@ import hashlib
 import requests
 import uuid
 
+
 # Định nghĩa đường dẫn đến các tệp dữ liệu JSON để lưu thông tin người dùng, sự kiện và yêu cầu sự kiện
 USERS_FILE = "users.json"
 EVENTS_FILE = "events.json"
@@ -57,7 +58,16 @@ class EventManagementApp:
 
         frame = Frame(self.root, bg="#0078D7")
         frame.pack(expand=True)
-
+        
+        try:
+            img = Image.open("logo.png")  # Sử dụng cùng logo.png
+            img = img.resize((100, 100), Image.LANCZOS)
+            self.register_logo_img = ImageTk.PhotoImage(img)
+            Label(frame, image=self.register_logo_img, bg="#0078D7").pack(pady=10)
+        except:
+            # Nếu không có logo, hiển thị biểu tượng mặc định
+            Label(frame, text="🎫", font=("Arial", 40), bg="#0078D7", fg="#FFFFFF").pack(pady=10)
+        
         Label(frame, text="Đăng Nhập Hệ Thống", font=("Arial", 16), bg="#0078D7", fg="#FFFFFF").pack(pady=20)
 
         Label(frame, text="Tên đăng nhập:", bg="#0078D7", fg="#FFFFFF").pack()
@@ -77,6 +87,15 @@ class EventManagementApp:
 
         frame = Frame(self.root, bg="#0078D7")
         frame.pack(expand=True)
+        
+        try:
+            img = Image.open("logo.png")  # Sử dụng cùng logo.png
+            img = img.resize((100, 100), Image.LANCZOS)
+            self.register_logo_img = ImageTk.PhotoImage(img)
+            Label(frame, image=self.register_logo_img, bg="#0078D7").pack(pady=10)
+        except:
+            # Nếu không có logo, hiển thị biểu tượng mặc định
+            Label(frame, text="🎫", font=("Arial", 40), bg="#0078D7", fg="#FFFFFF").pack(pady=10)
 
         Label(frame, text="Đăng Ký Tài Khoản", font=("Arial", 16), bg="#0078D7", fg="#FFFFFF").pack(pady=20)
 
@@ -214,7 +233,7 @@ class EventManagementApp:
         if self.user_role == "admin":
             Button(buttons_frame, text="Thêm sự kiện", command=self.add_event_ui, bg="#FFFFFF", fg="#0078D7").pack(side=LEFT, padx=5)
             Button(buttons_frame, text="Quản lý yêu cầu sự kiện", command=self.manage_event_requests_ui, bg="#FFFFFF", fg="#0078D7").pack(side=LEFT, padx=5)
-            Button(buttons_frame, text="Nhập từ web", command=self.import_events_from_web, bg="#FFFFFF", fg="#0078D7").pack(side=LEFT, padx=5)
+            Button(buttons_frame, text="Nhập từ API", command=self.import_events_from_web, bg="#FFFFFF", fg="#0078D7").pack(side=LEFT, padx=5)
             Button(buttons_frame, text="Sửa sự kiện", command=self.edit_event_ui, bg="#FFFFFF", fg="#0078D7").pack(side=LEFT, padx=5)
         else:
             Button(buttons_frame, text="Yêu cầu thêm sự kiện", command=self.request_event_ui, bg="#FFFFFF", fg="#0078D7").pack(side=LEFT, padx=5)
@@ -307,7 +326,7 @@ class EventManagementApp:
         buttons_frame.pack(pady=10)
 
         Button(buttons_frame, text="Gửi yêu cầu", command=self.send_event_request, bg="#FFFFFF", fg="#0078D7").pack(side=LEFT, padx=5)
-        Button(buttons_frame, text="Nhập từ web", command=self.request_event_from_web, bg="#FFFFFF", fg="#0078D7").pack(side=LEFT, padx=5)
+        Button(buttons_frame, text="Nhập từ API", command=self.request_event_from_web, bg="#FFFFFF", fg="#0078D7").pack(side=LEFT, padx=5)
         Button(buttons_frame, text="Hủy", command=self.show_events, bg="#FFFFFF", fg="#0078D7").pack(side=LEFT, padx=5)
 
     def add_event_ui(self):
@@ -1047,11 +1066,11 @@ class EventManagementApp:
     def show_web_events_for_request(self, events):
         """Hiển thị sự kiện từ web để người dùng chọn và yêu cầu"""
         import_window = Toplevel(self.root)
-        import_window.title("Yêu Cầu Sự Kiện Từ Web")
+        import_window.title("Yêu Cầu Sự Kiện Từ API")
         import_window.geometry("800x600")
         import_window.configure(bg="#0078D7")
 
-        Label(import_window, text="Yêu Cầu Sự Kiện Từ Web", font=("Arial", 16), bg="#0078D7", fg="#FFFFFF").pack(pady=10)
+        Label(import_window, text="Yêu Cầu Sự Kiện Từ API", font=("Arial", 16), bg="#0078D7", fg="#FFFFFF").pack(pady=10)
 
         tree = ttk.Treeview(import_window, columns=("ID", "Tên", "Ngày", "Địa điểm", "Mô tả", "Số người", "Giá vé"), show="headings", selectmode="extended")
         tree.heading("ID", text="ID")
@@ -1174,11 +1193,11 @@ class EventManagementApp:
     def show_imported_events(self, events):
         """Hiển thị sự kiện đã nhập cho admin chọn và nhập"""
         import_window = Toplevel(self.root)
-        import_window.title("Sự Kiện Nhập Từ Web")
+        import_window.title("Sự Kiện Nhập Từ API")
         import_window.geometry("800x600")
         import_window.configure(bg="#0078D7")
 
-        Label(import_window, text="Sự Kiện Nhập Từ Web", font=("Arial", 16), bg="#0078D7", fg="#FFFFFF").pack(pady=10)
+        Label(import_window, text="Sự Kiện Nhập Từ API", font=("Arial", 16), bg="#0078D7", fg="#FFFFFF").pack(pady=10)
 
         tree = ttk.Treeview(import_window, columns=("ID", "Tên", "Ngày", "Địa điểm", "Mô tả", "Số người", "Giá vé"), show="headings", selectmode="extended")
         tree.heading("ID", text="ID")
